@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Website Link Generator</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+    
+    h1, h2 {
+      color: white;
+      text-align: center;
+    }
+    
+    form {
+      text-align: center;
+      margin-top: 50px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    
+    input[type="number"],
+    input[type="submit"] {
+      padding: 5px;
+    }
+    
+    input[type="submit"] {
+      margin-top: 10px;
+    }
+    
+    #generated-link {
+      margin-top: 50px;
+      text-align: center;
+      font-size: 18px;
+    }
+    
+    #generated-link a {
+      color: white;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Website Link Generator</h1>
+  
+  <form>
+    <label for="members">Enter the number of members:</label>
+    <input type="number" id="members" name="members">
+    <br><br>
+    <input type="submit" value="Generate Link">
+  </form>
+  
+  <h2>Generated Link:</h2>
+  <p id="generated-link"></p>
+  
+  <script>
+    document.querySelector('form').addEventListener('submit', function(e) {
+      e.preventDefault(); // Prevent form submission
+      
+      // Get the entered number of members
+      var numOfMembers = parseInt(document.getElementById('members').value);
+      
+      // Generate the link using the entered number of members
+      var generatedLink = "https://myspacetalk.onrender.com/?members=" + numOfMembers;
+      
+      // Create a link element
+      var linkElement = document.createElement('a');
+      linkElement.href = generatedLink;
+      linkElement.textContent = generatedLink;
+      
+      // Clear previous content
+      var generatedLinkContainer = document.getElementById('generated-link');
+      generatedLinkContainer.innerHTML = '';
+      
+      // Append the link to the container
+      generatedLinkContainer.appendChild(linkElement);
+    });
+  </script>
+</body>
+</html>
